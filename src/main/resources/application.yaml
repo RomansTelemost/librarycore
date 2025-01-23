@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: librarycore
+  datasource:
+    url: jdbc:postgresql://localhost:5434/library
+    username: postgres
+    password: root
+  liquibase:
+      change-log: classpath:db/changelog-master.yaml
