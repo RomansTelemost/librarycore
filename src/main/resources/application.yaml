@@ -7,3 +7,23 @@ spring:
     password: root
   liquibase:
       change-log: classpath:db/changelog-master.yaml
+  jpa:
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+hibernate:
+  show_sql: true
+
+#logging:
+#  level:
+#    org.hibernate.orm.jdbc.bind: trace
+#spring:
+#  jpa:
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+

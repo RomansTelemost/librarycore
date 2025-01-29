@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.romanco.library.librarycore.entity.Author;
 import org.romanco.library.librarycore.exception.AuthorNotFoundException;
 import org.romanco.library.librarycore.repository.AuthorRepository;
+import org.romanco.library.librarycore.repository.AuthorRepository2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthorServiceImpl implements AuthorService {
 
-    private final AuthorRepository authorRepository;
+    private final AuthorRepository2 authorRepository;
 
     @Override
     public void createAuthor(Author author) {
@@ -32,6 +33,9 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public List<Author> findAll() {
-        return authorRepository.findAll();
+        List<Author> authors = authorRepository.findAll();
+        System.out.println(authors.get(0).getBooks().get(0).getTitle());
+
+        return authors;
     }
 }
