@@ -1,7 +1,9 @@
 package org.romanco.library.librarycore.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.romanco.library.librarycore.dto.AuthorDto;
 import org.romanco.library.librarycore.entity.Author;
+import org.romanco.library.librarycore.mapper.AuthorMapper;
 import org.romanco.library.librarycore.service.AuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +25,8 @@ public class AuthorController {
     }
 
     @GetMapping("/author/{id}")
-    public ResponseEntity<Author> getAuthorById(@PathVariable(name = "id") Long id) {
-        return new ResponseEntity<>(authorService.findById(id), HttpStatus.OK);
+    public ResponseEntity<AuthorDto> getAuthorById(@PathVariable(name = "id") Long id) {
+        return new ResponseEntity<>(AuthorMapper.mapAuthor(authorService.findById(id)), HttpStatus.OK);
     }
 
     @DeleteMapping("/author/{id}")
