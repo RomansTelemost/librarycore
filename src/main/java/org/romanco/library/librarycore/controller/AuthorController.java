@@ -5,7 +5,6 @@ import org.romanco.library.librarycore.entity.Author;
 import org.romanco.library.librarycore.service.AuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,5 +36,11 @@ public class AuthorController {
     @GetMapping("/authors")
     public ResponseEntity<List<Author>> getAllAuthors() {
         return new ResponseEntity<>(authorService.findAll(), HttpStatus.OK);
+    }
+
+    @PutMapping("/author")
+    public ResponseEntity<Void> updateAuthor(@RequestBody Author author) {
+        authorService.updateAuthor(author);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

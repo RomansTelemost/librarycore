@@ -1,10 +1,8 @@
 package org.romanco.library.librarycore.repository;
 
 import org.romanco.library.librarycore.entity.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+public interface BookRepository extends JpaRepository<Book, Long> {
 
-public interface BookRepository {
-
-    List<Book> findByAuthorId(Long authorId);
 }
