@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/v1")
@@ -36,8 +37,11 @@ public class AuthorController {
     }
 
     @GetMapping("/authors")
-    public ResponseEntity<List<Author>> getAllAuthors() {
-        return new ResponseEntity<>(authorService.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<AuthorDto>> getAllAuthors() {
+        return new ResponseEntity<>(authorService.findAll().stream()
+                .map(AuthorMapper::mapAuthor)
+                .collect(Collectors.toList()),
+                HttpStatus.OK);
     }
 
     @PutMapping("/author")
