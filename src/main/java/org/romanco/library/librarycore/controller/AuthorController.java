@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 public class AuthorController {
 
     private final AuthorService authorService;
+    private final AuthorMapper authorMapper;
 
     @PostMapping("/author")
     public ResponseEntity<Void> createAuthor(@RequestBody Author author) {
@@ -27,7 +28,7 @@ public class AuthorController {
 
     @GetMapping("/author/{id}")
     public ResponseEntity<AuthorDto> getAuthorById(@PathVariable(name = "id") Long id) {
-        return new ResponseEntity<>(AuthorMapper.mapAuthor(authorService.findByIdWithBooks(id)), HttpStatus.OK);
+        return new ResponseEntity<>(authorMapper.toDto(authorService.findByIdWithBooks(id)), HttpStatus.OK);
     }
 
     @DeleteMapping("/author/{id}")
@@ -39,7 +40,7 @@ public class AuthorController {
     @GetMapping("/authors")
     public ResponseEntity<List<AuthorDto>> getAllAuthors() {
         return new ResponseEntity<>(authorService.findAllWithBooks().stream()
-                .map(AuthorMapper::mapAuthor)
+                .map(authorMapper::toDto)
                 .collect(Collectors.toList()),
                 HttpStatus.OK);
     }
