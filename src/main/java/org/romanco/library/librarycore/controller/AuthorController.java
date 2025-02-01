@@ -27,7 +27,7 @@ public class AuthorController {
 
     @GetMapping("/author/{id}")
     public ResponseEntity<AuthorDto> getAuthorById(@PathVariable(name = "id") Long id) {
-        return new ResponseEntity<>(AuthorMapper.mapAuthor(authorService.findById(id)), HttpStatus.OK);
+        return new ResponseEntity<>(AuthorMapper.mapAuthor(authorService.findByIdWithBooks(id)), HttpStatus.OK);
     }
 
     @DeleteMapping("/author/{id}")
@@ -38,7 +38,7 @@ public class AuthorController {
 
     @GetMapping("/authors")
     public ResponseEntity<List<AuthorDto>> getAllAuthors() {
-        return new ResponseEntity<>(authorService.findAll().stream()
+        return new ResponseEntity<>(authorService.findAllWithBooks().stream()
                 .map(AuthorMapper::mapAuthor)
                 .collect(Collectors.toList()),
                 HttpStatus.OK);

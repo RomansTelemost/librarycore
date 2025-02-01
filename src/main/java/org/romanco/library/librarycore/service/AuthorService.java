@@ -8,11 +8,11 @@ public interface AuthorService {
 
     void createAuthor(Author author);
 
-    Author findById(Long id);
+    Author findByIdWithBooks(Long id);
 
     void deleteById(Long id);
 
-    List<Author> findAll();
+    List<Author> findAllWithBooks();
 
     void updateAuthor(Author author);
 }

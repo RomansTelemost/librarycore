@@ -18,7 +18,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public void createBook(Book book) {
         Optional.ofNullable(book.getAuthor()).orElseThrow(AuthorNotFoundException::new);
-        authorService.findById(book.getAuthor().getId());
+        authorService.findByIdWithBooks(book.getAuthor().getId());
         bookRepository.save(book);
     }
 

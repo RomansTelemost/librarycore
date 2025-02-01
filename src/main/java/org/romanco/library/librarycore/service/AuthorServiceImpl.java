@@ -23,8 +23,8 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author findById(Long id) {
-        return authorRepository.findById(id).orElseThrow(AuthorNotFoundException::new);
+    public Author findByIdWithBooks(Long id) {
+        return authorRepository.findByIdWithBooks(id).orElseThrow(AuthorNotFoundException::new);
     }
 
     @Override
@@ -33,13 +33,13 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> findAll() {
-        return authorRepository.findAll();
+    public List<Author> findAllWithBooks() {
+        return authorRepository.findAllWithBooks();
     }
 
     @Override
     public void updateAuthor(Author author) {
-        Optional<Author> findAuthorOpt = authorRepository.findById(author.getId());
+        Optional<Author> findAuthorOpt = authorRepository.findByIdWithBooks(author.getId());
 
         if (findAuthorOpt.isPresent()) {
             Author findAuthor = findAuthorOpt.get();

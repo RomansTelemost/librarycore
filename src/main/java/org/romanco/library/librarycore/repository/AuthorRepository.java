@@ -11,11 +11,9 @@ import java.util.Optional;
 
 public interface AuthorRepository extends JpaRepository<Author, Long> {
 
-    @Override
-    @EntityGraph(type = EntityGraph.EntityGraphType.FETCH, attributePaths = "books")
-    List<Author> findAll();
+    @Query(value = "SELECT a FROM Author a left join fetch a.books b")
+    List<Author> findAllWithBooks();
 
-    @Override
     @Query(value = "SELECT a FROM Author a left join fetch a.books b WHERE a.id = :id")
-    Optional<Author> findById(@Param("id") Long id);
+    Optional<Author> findByIdWithBooks(@Param("id") Long id);
 }
