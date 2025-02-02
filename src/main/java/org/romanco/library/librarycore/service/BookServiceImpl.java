@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.romanco.library.librarycore.entity.Book;
 import org.romanco.library.librarycore.exception.AuthorNotFoundException;
 import org.romanco.library.librarycore.repository.BookRepository;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

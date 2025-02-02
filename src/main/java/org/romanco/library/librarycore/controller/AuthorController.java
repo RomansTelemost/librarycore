@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @RestController
@@ -38,9 +39,15 @@ public class AuthorController {
     }
 
     @GetMapping("/authors")
-    public ResponseEntity<List<AuthorDto>> getAllAuthors() {
-        return new ResponseEntity<>(authorService.findAllWithBooks().stream()
-                .map(authorMapper::toDto)
+    public ResponseEntity<List<AuthorDto>> getAllAuthors(@RequestParam(name = "extended") boolean extended) {
+        Function<Author, AuthorDto> function;
+        if (extended) {
+            function = authorMapper::toDtoWithBooks;
+        } else {
+            function = authorMapper::toDto;
+        }
+        return new ResponseEntity<>(authorService.findAll(extended).stream()
+                .map(function)
                 .collect(Collectors.toList()),
                 HttpStatus.OK);
     }

@@ -12,7 +12,7 @@ public interface AuthorService {
 
     void deleteById(Long id);
 
-    List<Author> findAllWithBooks();
+    List<Author> findAll(boolean extended);
 
     void updateAuthor(Author author);
 }

@@ -33,8 +33,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> findAllWithBooks() {
-        return authorRepository.findAllWithBooks();
+    public List<Author> findAll(boolean extended) {
+        if (extended) {
+            return authorRepository.findAllWithBooks();
+        }
+        return authorRepository.findAll();
     }
 
     @Override
@@ -50,11 +53,11 @@ public class AuthorServiceImpl implements AuthorService {
             findAuthor.setDeathDate(author.getDeathDate());
 
             List<Book> books = new ArrayList<>();
-            for (Book book : author.getBooks()) {
+            for (Book book : author.getBookList()) {
                 book.setAuthor(author);
                 books.add(book);
             }
-            findAuthor.setBooks(books);
+            findAuthor.setBookList(books);
         }
         authorRepository.save(author);
     }

@@ -11,9 +11,9 @@ import java.util.Optional;
 
 public interface AuthorRepository extends JpaRepository<Author, Long> {
 
-    @Query(value = "SELECT a FROM Author a left join fetch a.books b")
+    @Query(value = "SELECT a FROM Author a left join fetch a.bookList b")
     List<Author> findAllWithBooks();
 
-    @Query(value = "SELECT a FROM Author a left join fetch a.books b WHERE a.id = :id")
+    @Query(value = "SELECT a FROM Author a left join fetch a.bookList b WHERE a.id = :id")
     Optional<Author> findByIdWithBooks(@Param("id") Long id);
 }

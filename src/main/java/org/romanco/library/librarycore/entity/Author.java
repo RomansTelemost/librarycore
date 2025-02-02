@@ -25,5 +25,5 @@ public class Author {
     private LocalDate deathDate;
 
     @OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "author", fetch = FetchType.LAZY)
-    private List<Book> books;
+    private List<Book> bookList;
 }
