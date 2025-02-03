@@ -7,7 +7,15 @@ import org.romanco.library.librarycore.mapper.AuthorMapper;
 import org.romanco.library.librarycore.service.AuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.function.Function;
@@ -22,14 +30,16 @@ public class AuthorController {
     private final AuthorMapper authorMapper;
 
     @PostMapping("/author")
-    public ResponseEntity<Void> createAuthor(@RequestBody Author author) {
-        authorService.createAuthor(author);
+    public ResponseEntity<Void> createAuthor(@RequestBody AuthorDto authorDto) {
+        authorService.createAuthor(authorMapper.toEntity(authorDto));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/author/{id}")
     public ResponseEntity<AuthorDto> getAuthorById(@PathVariable(name = "id") Long id) {
-        return new ResponseEntity<>(authorMapper.toDto(authorService.findByIdWithBooks(id)), HttpStatus.OK);
+        return new ResponseEntity<>(
+                authorMapper.toDto(authorService.findByIdWithBooks(id)),
+                HttpStatus.OK);
     }
 
     @DeleteMapping("/author/{id}")
@@ -56,8 +66,8 @@ public class AuthorController {
     }
 
     @PutMapping("/author")
-    public ResponseEntity<Void> updateAuthor(@RequestBody Author author) {
-        authorService.updateAuthor(author);
+    public ResponseEntity<Void> updateAuthor(@RequestBody AuthorDto authorDto) {
+        authorService.updateAuthor(authorMapper.toEntity(authorDto));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -4,7 +4,9 @@ import org.romanco.library.librarycore.entity.Book;
 
 public interface BookService {
 
-    void createBook(Book book);
+    void createBook(Long authorId, Book book);
 
     void deleteById(Long id);
+
+    Book findById(Long id);
 }

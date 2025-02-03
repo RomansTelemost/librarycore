@@ -16,5 +16,8 @@ public interface AuthorMapper {
     })
     AuthorDto toDtoWithBooks(Author author);
 
-    Author fromDto(AuthorDto authorDto);
+    @Mappings({
+            @Mapping(source = "books", target = "bookList")
+    })
+    Author toEntity(AuthorDto authorDto);
 }

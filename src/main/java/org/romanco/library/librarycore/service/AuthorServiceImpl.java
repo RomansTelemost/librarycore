@@ -37,12 +37,11 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Page<Author> findAll(boolean extended, Integer page, Integer size) {
-        Pageable f = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page, size);
         if (extended) {
-
-            return authorRepository.findAllWithBooks(f);
+            return authorRepository.findAllWithBooks(pageable);
         }
-        return authorRepository.findAll(f);
+        return authorRepository.findAll(pageable);
     }
 
     @Override
