@@ -5,6 +5,9 @@ import org.romanco.library.librarycore.entity.Author;
 import org.romanco.library.librarycore.entity.Book;
 import org.romanco.library.librarycore.exception.AuthorNotFoundException;
 import org.romanco.library.librarycore.repository.AuthorRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -33,11 +36,13 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> findAll(boolean extended) {
+    public Page<Author> findAll(boolean extended, Integer page, Integer size) {
+        Pageable f = PageRequest.of(page, size);
         if (extended) {
-            return authorRepository.findAllWithBooks();
+
+            return authorRepository.findAllWithBooks(f);
         }
-        return authorRepository.findAll();
+        return authorRepository.findAll(f);
     }
 
     @Override

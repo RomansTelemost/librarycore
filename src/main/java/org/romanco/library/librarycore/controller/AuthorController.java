@@ -39,14 +39,17 @@ public class AuthorController {
     }
 
     @GetMapping("/authors")
-    public ResponseEntity<List<AuthorDto>> getAllAuthors(@RequestParam(name = "extended") boolean extended) {
+    public ResponseEntity<List<AuthorDto>> getAllAuthors(
+            @RequestParam(name = "extended") boolean extended,
+            @RequestParam(name = "page") Integer page,
+            @RequestParam(name = "size") Integer size) {
         Function<Author, AuthorDto> function;
         if (extended) {
             function = authorMapper::toDtoWithBooks;
         } else {
             function = authorMapper::toDto;
         }
-        return new ResponseEntity<>(authorService.findAll(extended).stream()
+        return new ResponseEntity<>(authorService.findAll(extended, page, size).getContent().stream()
                 .map(function)
                 .collect(Collectors.toList()),
                 HttpStatus.OK);

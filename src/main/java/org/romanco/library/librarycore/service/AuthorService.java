@@ -1,8 +1,7 @@
 package org.romanco.library.librarycore.service;
 
 import org.romanco.library.librarycore.entity.Author;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface AuthorService {
 
@@ -12,7 +11,7 @@ public interface AuthorService {
 
     void deleteById(Long id);
 
-    List<Author> findAll(boolean extended);
+    Page<Author> findAll(boolean extended, Integer page, Integer size);
 
     void updateAuthor(Author author);
 }
