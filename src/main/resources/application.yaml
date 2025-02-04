@@ -2,7 +2,7 @@ spring:
   application:
     name: librarycore
   datasource:
-    url: jdbc:postgresql://localhost:5434/library
+    url: jdbc:postgresql://host.docker.internal:5434/library
     username: postgres
     password: root
   liquibase:
