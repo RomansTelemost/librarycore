@@ -22,7 +22,7 @@ public class ApplicationUserServiceImpl implements ApplicationUserService, UserD
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        return userRepository.findById(username).orElseThrow(() -> new UsernameNotFoundException("User with login: %s not registered".formatted(username)));
     }
 
     @Override

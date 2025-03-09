@@ -8,6 +8,7 @@ import org.romanco.library.librarycore.entity.ApplicationUser;
 public interface UserMapper {
     ApplicationUserDto toDto(ApplicationUser applicationUser);
 
+//    @Mapping(expression = "java()", target = "sex")
     ApplicationUser toUser(ApplicationUserDto applicationUserDto);
     //TODO use java exp instead of value
 }
