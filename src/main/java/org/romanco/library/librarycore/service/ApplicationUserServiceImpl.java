@@ -2,6 +2,8 @@ package org.romanco.library.librarycore.service;
 
 import lombok.RequiredArgsConstructor;
 import org.romanco.library.librarycore.dto.ApplicationUserDto;
+import org.romanco.library.librarycore.mapper.UserMapper;
+import org.romanco.library.librarycore.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,6 +16,10 @@ public class ApplicationUserServiceImpl implements ApplicationUserService, UserD
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    private final UserMapper userMapper;
+
+    private final UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return null;
@@ -22,7 +28,6 @@ public class ApplicationUserServiceImpl implements ApplicationUserService, UserD
     @Override
     public void registerUser(ApplicationUserDto applicationUserDto) {
         applicationUserDto.setPassword(bCryptPasswordEncoder.encode(applicationUserDto.getPassword()));
-//        mapper todo
-
+        userRepository.save(userMapper.toUser(applicationUserDto));
     }
 }
