@@ -1,8 +1,8 @@
-package org.romanco.library.librarycore.controller;
+package org.romanco.library.libraryaauth.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.romanco.library.librarycore.dto.ApplicationUserDto;
-import org.romanco.library.librarycore.service.ApplicationUserService;
+import org.romanco.library.libraryaauth.dto.ApplicationUserDto;
+import org.romanco.library.libraryaauth.service.ApplicationUserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

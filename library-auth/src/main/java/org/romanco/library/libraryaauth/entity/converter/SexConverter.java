@@ -1,8 +1,8 @@
-package org.romanco.library.librarycore.entity.converter;
+package org.romanco.library.libraryaauth.entity.converter;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-import org.romanco.library.librarycore.enumeration.Sex;
+import org.romanco.library.libraryaauth.enumeration.Sex;
 
 @Converter
 public class SexConverter implements AttributeConverter<Sex, String> {

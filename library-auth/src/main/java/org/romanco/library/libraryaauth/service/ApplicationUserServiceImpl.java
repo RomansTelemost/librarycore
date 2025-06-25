@@ -1,9 +1,9 @@
-package org.romanco.library.librarycore.service;
+package org.romanco.library.libraryaauth.service;
 
 import lombok.RequiredArgsConstructor;
-import org.romanco.library.librarycore.dto.ApplicationUserDto;
-import org.romanco.library.librarycore.mapper.UserMapper;
-import org.romanco.library.librarycore.repository.UserRepository;
+import org.romanco.library.libraryaauth.dto.ApplicationUserDto;
+import org.romanco.library.libraryaauth.mapper.UserMapper;
+import org.romanco.library.libraryaauth.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

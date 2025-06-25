@@ -1,4 +1,4 @@
-package org.romanco.library.librarycore.dto;
+package org.romanco.library.libraryaauth.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

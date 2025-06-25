@@ -1,4 +1,4 @@
-package org.romanco.library.librarycore.entity;
+package org.romanco.library.libraryaauth.entity;
 
 
 import jakarta.persistence.*;
@@ -6,8 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.romanco.library.librarycore.entity.converter.SexConverter;
-import org.romanco.library.librarycore.enumeration.Sex;
+import org.romanco.library.libraryaauth.entity.converter.SexConverter;
+import org.romanco.library.libraryaauth.enumeration.Sex;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

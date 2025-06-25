@@ -1,8 +1,8 @@
-package org.romanco.library.librarycore.mapper;
+package org.romanco.library.libraryaauth.mapper;
 
 import org.mapstruct.Mapper;
-import org.romanco.library.librarycore.dto.ApplicationUserDto;
-import org.romanco.library.librarycore.entity.ApplicationUser;
+import org.romanco.library.libraryaauth.dto.ApplicationUserDto;
+import org.romanco.library.libraryaauth.entity.ApplicationUser;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
