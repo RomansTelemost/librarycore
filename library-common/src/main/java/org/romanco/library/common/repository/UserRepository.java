@@ -1,6 +1,6 @@
-package org.romanco.library.libraryaauth.repository;
+package org.romanco.library.common.repository;
 
-import org.romanco.library.libraryaauth.entity.ApplicationUser;
+import org.romanco.library.common.entity.ApplicationUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

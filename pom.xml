@@ -6,6 +6,7 @@
     <modules>
         <module>library-core</module>
         <module>library-auth</module>
+        <module>library-common</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
