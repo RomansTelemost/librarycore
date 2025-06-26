@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changeset/2025-01-15-init.sql
   - include:
       file: db/changeset/2025-02-17-create-application-user-table.sql
+  - include:
+      file: db/changeset/2025-06-25-user-account-create.sql
