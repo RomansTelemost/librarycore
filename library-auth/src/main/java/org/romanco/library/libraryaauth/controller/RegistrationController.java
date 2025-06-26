@@ -1,6 +1,7 @@
 package org.romanco.library.libraryaauth.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.romanco.library.libraryaauth.dto.ApplicationUserAccountDTO;
 import org.romanco.library.libraryaauth.dto.ApplicationUserDto;
 import org.romanco.library.libraryaauth.service.RegistrationService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +15,7 @@ public class RegistrationController {
     private final RegistrationService registrationService;
 
     @PostMapping("/api/v1/register")
-    public void registerUser(@RequestBody ApplicationUserDto applicationUserDto) {
-        registrationService.registerUser(applicationUserDto);
+    public void registerUser(@RequestBody ApplicationUserAccountDTO applicationUserAccountDTO) {
+        registrationService.registerUser(applicationUserAccountDTO);
     }
 }

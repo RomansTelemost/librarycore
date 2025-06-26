@@ -1,7 +1,7 @@
 package org.romanco.library.librarycore.service;
 
 import lombok.RequiredArgsConstructor;
-import org.romanco.library.common.repository.UserRepository;
+import org.romanco.library.common.repository.ApplicationUserAccountRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,11 +14,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    private final UserRepository userRepository;
+    private final ApplicationUserAccountRepository applicationUserAccountRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findById(username).orElseThrow(() -> new UsernameNotFoundException("User with login: %s not registered".formatted(username)));
+        return applicationUserAccountRepository.findById(username).orElseThrow(() -> new UsernameNotFoundException("User with login: %s not registered".formatted(username)));
     }
 
 }

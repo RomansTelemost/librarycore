@@ -1,8 +1,8 @@
 package org.romanco.library.libraryaauth.service;
 
-import org.romanco.library.libraryaauth.dto.ApplicationUserDto;
+import org.romanco.library.libraryaauth.dto.ApplicationUserAccountDTO;
 
 public interface RegistrationService {
 
-    void registerUser(ApplicationUserDto applicationUserDto);
+    void registerUser(ApplicationUserAccountDTO applicationUserAccountDTO);
 }

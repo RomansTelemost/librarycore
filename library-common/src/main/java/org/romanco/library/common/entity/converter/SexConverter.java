@@ -9,7 +9,7 @@ public class SexConverter implements AttributeConverter<Sex, String> {
 
     @Override
     public String convertToDatabaseColumn(Sex sex) {
-        return sex.getDatabaseValue();
+        return sex ==null ? null :sex.getDatabaseValue();
     }
 
     @Override

@@ -14,11 +14,10 @@ import java.time.LocalDate;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApplicationUserDto {
 
-    private String login;
+    private int id;
     private String firstName;
     private String lastName;
     @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate birthday;
     private String sex;
-    private String password;
 }

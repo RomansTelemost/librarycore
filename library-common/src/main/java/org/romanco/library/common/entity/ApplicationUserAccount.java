@@ -1,6 +1,5 @@
 package org.romanco.library.common.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,24 +19,29 @@ import java.util.Collections;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "application_user")
-public class ApplicationUser {
+@Table(name = "application_user_account")
+public class ApplicationUserAccount implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "first_name")
-    private String firstName;
-    @Column(name = "last_name")
-    private String lastName;
-    @Column(name = "birthday")
-    private LocalDate birthday;
-    @Column(name = "sex")
-    @Convert(converter = SexConverter.class)
-    private Sex sex;
+    @Column(name = "login", nullable = false)
+    private String login;
+    @Column(name = "password")
+    private String password;
 
-    @OneToOne(mappedBy = "applicationUser")
-    private ApplicationUserAccount applicationUserAccount;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private ApplicationUser applicationUser;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.emptySet();
+    }
+
+    @Override
+    public String getUsername() {
+        return login;
+    }
 }
-
