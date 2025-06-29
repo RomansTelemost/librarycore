@@ -1,19 +1,21 @@
 package org.romanco.library.common.entity;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.romanco.library.common.entity.converter.SexConverter;
 import org.romanco.library.common.entity.enumeration.Sex;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Collections;
 
 @Getter
 @Setter
@@ -36,8 +38,5 @@ public class ApplicationUser {
     @Column(name = "sex")
     @Convert(converter = SexConverter.class)
     private Sex sex;
-
-    @OneToOne(mappedBy = "applicationUser")
-    private ApplicationUserAccount applicationUserAccount;
 }
 
