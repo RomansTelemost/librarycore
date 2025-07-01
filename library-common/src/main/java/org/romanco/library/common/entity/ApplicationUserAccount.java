@@ -8,10 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -28,7 +25,7 @@ public class ApplicationUserAccount implements UserDetails {
 
     @Id
     @Column(name = "id")
-    private int id;
+    private Long id;
     @Column(name = "login", nullable = false)
     private String login;
 

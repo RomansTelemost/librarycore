@@ -12,13 +12,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
     private final ApplicationUserAccountRepository applicationUserAccountRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return applicationUserAccountRepository.findById(username).orElseThrow(() -> new UsernameNotFoundException("User with login: %s not registered".formatted(username)));
+        return applicationUserAccountRepository.findByLogin(username).orElseThrow(() -> new UsernameNotFoundException("User with login: %s not registered".formatted(username)));
     }
 
 }
