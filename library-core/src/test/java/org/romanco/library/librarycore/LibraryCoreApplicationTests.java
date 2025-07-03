@@ -6,17 +6,21 @@ import org.romanco.library.common.entity.ApplicationUserAccount;
 import org.romanco.library.common.repository.ApplicationUserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.test.context.ActiveProfiles;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Import(TestcontainersConfiguration.class)
+
 @SpringBootTest
+@Testcontainers
+@ActiveProfiles({"test"})
 class LibraryCoreApplicationTests {
 
 	private final ApplicationUserAccountRepository applicationUserAccountRepository;

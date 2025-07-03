@@ -6,4 +6,4 @@ spring:
     password: postgres
     driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
   liquibase:
-    change-log: classpath:db/changelog-master.yaml
+    change-log: classpath:db/changelog-master-test.yaml

@@ -9,11 +9,11 @@ public class SexConverter implements AttributeConverter<Sex, String> {
 
     @Override
     public String convertToDatabaseColumn(Sex sex) {
-        return sex ==null ? null :sex.getDatabaseValue();
+        return sex == null ? null :sex.getDatabaseValue();
     }
 
     @Override
     public Sex convertToEntityAttribute(String databaseValue) {
-        return Sex.fromDataBaseValue(databaseValue);
+        return databaseValue == null ? null : Sex.fromDataBaseValue(databaseValue);
     }
 }
