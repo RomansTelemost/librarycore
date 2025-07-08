@@ -66,16 +66,6 @@ class RegistrationServiceImplTest {
 
     @Test
     void registerUser() {
-//        ApplicationUserAccount expectedUserAccount = new ApplicationUserAccount();
-//        expectedUserAccount.setLogin("login");
-//        expectedUserAccount.setPassword(bCryptPasswordEncoder.encode("123"));
-//        ApplicationUser expectedApplicationUser = new ApplicationUser();
-//        expectedApplicationUser.setFirstName("firstName");
-//        expectedApplicationUser.setLastName("lastName");
-//        expectedApplicationUser.setBirthday(LocalDate.of(1990, Month.JANUARY, 10));
-//        expectedApplicationUser.setSex(Sex.MALE);
-//        expectedUserAccount.setApplicationUser(expectedApplicationUser);
-
         registrationService.registerUser(DTO);
 
         Optional<ApplicationUserAccount> actualOpt = applicationUserAccountRepository.findByLogin(expectedUserAccount.getLogin());
