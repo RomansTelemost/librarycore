@@ -1,11 +1,10 @@
-package org.romanco.library.librarycore.service;
+package org.romanco.library.libraryaauth.service;
 
 import lombok.RequiredArgsConstructor;
 import org.romanco.library.common.repository.ApplicationUserAccountRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
