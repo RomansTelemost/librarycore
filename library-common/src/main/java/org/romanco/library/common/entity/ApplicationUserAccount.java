@@ -26,7 +26,7 @@ public class ApplicationUserAccount implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "id")
     private ApplicationUser applicationUser;
