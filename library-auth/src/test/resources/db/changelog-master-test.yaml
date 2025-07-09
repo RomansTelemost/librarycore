@@ -1,3 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: db/changeset/2025-06-25-user-account-create2.sql
