@@ -15,10 +15,10 @@ public class JwtServiceImpl implements JwtService {
     private final Clock clock = DefaultClock.INSTANCE;
 
     @Value("${jwt.ttlMinutes}")
-    private int TTL_MINUTES;
+    private int ttlMinutes;
 
     @Value("${jwt.secret}")
-    private String SECRET;
+    private String secret;
 
     @Override
     public String buildJwt(String login) {
@@ -27,8 +27,8 @@ public class JwtServiceImpl implements JwtService {
         return Jwts.builder()
                 .setSubject(login)
                 .setIssuedAt(creationDate)
-                .setExpiration(new Date(creationDate.getTime() + (long) TTL_MINUTES * 1000 * 60))
-                .signWith(SignatureAlgorithm.HS512, SECRET)
+                .setExpiration(new Date(creationDate.getTime() + (long) ttlMinutes * 1000 * 60))
+                .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
 }
