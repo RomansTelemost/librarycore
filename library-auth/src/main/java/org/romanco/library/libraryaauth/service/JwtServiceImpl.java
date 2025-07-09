@@ -4,6 +4,7 @@ import io.jsonwebtoken.Clock;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.DefaultClock;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -12,8 +13,12 @@ import java.util.Date;
 public class JwtServiceImpl implements JwtService {
 
     private final Clock clock = DefaultClock.INSTANCE;
-    private final static int TTL_MINUTES = 5;
-    private final static String SECRET = "secreteeffffffffffffffffffffffffffffffffffffffffffaf";
+
+    @Value("${jwt.ttlMinutes}")
+    private int TTL_MINUTES;
+
+    @Value("${jwt.secret}")
+    private String SECRET;
 
     @Override
     public String buildJwt(String login) {
