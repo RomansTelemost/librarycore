@@ -3,7 +3,7 @@ package org.romanco.library.libraryaauth.service;
 import lombok.RequiredArgsConstructor;
 import org.romanco.library.common.dto.ApplicationUserComposeDto;
 import org.romanco.library.libraryaauth.entity.ApplicationUserAccount;
-import org.romanco.library.libraryaauth.mapper.ApplicationUserMapper;
+import org.romanco.library.libraryaauth.mapper.ApplicationUserAccountMapper;
 import org.romanco.library.libraryaauth.repository.ApplicationUserAccountRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    private final ApplicationUserMapper applicationUserMapper;
+    private final ApplicationUserAccountMapper applicationUserAccountMapper;
 
     private final ApplicationUserAccountRepository applicationUserAccountRepository;
 
@@ -23,7 +23,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Transactional
     public void registerUser(ApplicationUserComposeDto applicationUserComposeDto) {
         applicationUserComposeDto.setPassword(bCryptPasswordEncoder.encode(applicationUserComposeDto.getPassword()));
-        ApplicationUserAccount applicationUserAccount = applicationUserMapper.toApplicationUserAccount(applicationUserComposeDto);
+        ApplicationUserAccount applicationUserAccount = applicationUserAccountMapper.toApplicationUserAccount(applicationUserComposeDto);
 //        ApplicationUser applicationUser = applicationUserMapper.toApplicationUser(applicationUserComposeDto);
 //        applicationUserAccount.setApplicationUser(applicationUser);
         applicationUserAccountRepository.save(applicationUserAccount);
