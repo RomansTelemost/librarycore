@@ -1,5 +1,6 @@
 package org.romanco.library.librarycore.config;
 
+import org.romanco.library.librarycore.filter.ApiKeyFilter;
 import org.romanco.library.librarycore.filter.JwtFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -25,9 +26,9 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> requests
-                        .anyRequest()
-                        .authenticated())
-                .addFilterBefore(new JwtFilter(secret), BasicAuthenticationFilter.class);
+                        .anyRequest().authenticated())
+                .addFilterBefore(new JwtFilter(secret), BasicAuthenticationFilter.class)
+                .addFilterAfter(new ApiKeyFilter(), BasicAuthenticationFilter.class);
 
         return http.build();
     }

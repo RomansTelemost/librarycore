@@ -16,5 +16,6 @@ public class RegistrationController {
     @PostMapping("/api/v1/register")
     public void registerUser(@RequestBody ApplicationUserComposeDto applicationUserComposeDto) {
         registrationService.registerUser(applicationUserComposeDto);
+
     }
 }

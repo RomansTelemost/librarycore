@@ -21,4 +21,8 @@ springdoc:
     path: /api-docs
 jwt:
   secret: 'secreteeffffffffffffffffffffffffffffffffffffffffffaf'
+apiKeys:
+  map:
+    apiKey: asda
+    key2: asdd
 
