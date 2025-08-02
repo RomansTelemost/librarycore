@@ -1,7 +1,7 @@
 package org.romanco.library.libraryaauth.service;
 
 import lombok.RequiredArgsConstructor;
-import org.romanco.library.common.repository.ApplicationUserAccountRepository;
+import org.romanco.library.libraryaauth.repository.ApplicationUserAccountRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

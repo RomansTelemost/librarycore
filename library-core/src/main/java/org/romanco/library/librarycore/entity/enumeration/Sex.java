@@ -1,4 +1,4 @@
-package org.romanco.library.common.entity.enumeration;
+package org.romanco.library.librarycore.entity.enumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,10 +1,10 @@
-package org.romanco.library.common.entity;
+package org.romanco.library.librarycore.entity;
 
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.romanco.library.common.entity.converter.SexConverter;
-import org.romanco.library.common.entity.enumeration.Sex;
+import org.romanco.library.librarycore.entity.converter.SexConverter;
+import org.romanco.library.librarycore.entity.enumeration.Sex;
 
 import java.time.LocalDate;
 

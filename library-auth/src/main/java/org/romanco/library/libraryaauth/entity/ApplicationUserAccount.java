@@ -1,4 +1,4 @@
-package org.romanco.library.common.entity;
+package org.romanco.library.libraryaauth.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,6 +18,7 @@ import java.util.Collections;
 public class ApplicationUserAccount implements UserDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @Column(name = "login", nullable = false)
@@ -25,11 +26,6 @@ public class ApplicationUserAccount implements UserDetails {
 
     @Column(name = "password")
     private String password;
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @MapsId
-    @JoinColumn(name = "id")
-    private ApplicationUser applicationUser;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
