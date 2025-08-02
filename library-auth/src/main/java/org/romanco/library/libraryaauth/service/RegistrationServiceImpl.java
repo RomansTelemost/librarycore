@@ -1,7 +1,7 @@
 package org.romanco.library.libraryaauth.service;
 
 import lombok.RequiredArgsConstructor;
-import org.romanco.library.libraryaauth.dto.ApplicationUserComposeDto;
+import org.romanco.library.common.dto.ApplicationUserComposeDto;
 import org.romanco.library.libraryaauth.entity.ApplicationUserAccount;
 import org.romanco.library.libraryaauth.mapper.ApplicationUserMapper;
 import org.romanco.library.libraryaauth.repository.ApplicationUserAccountRepository;

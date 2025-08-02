@@ -1,7 +1,7 @@
 package org.romanco.library.libraryaauth.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.romanco.library.libraryaauth.dto.ApplicationUserComposeDto;
+import org.romanco.library.common.dto.ApplicationUserComposeDto;
 import org.romanco.library.libraryaauth.service.RegistrationService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
