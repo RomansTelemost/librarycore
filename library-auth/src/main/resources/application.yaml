@@ -22,4 +22,8 @@ springdoc:
 jwt:
   ttlMinutes: 5
   secret: 'secreteeffffffffffffffffffffffffffffffffffffffffffaf'
-
+apiKeys:
+  customApiKey: testApi
+core:
+  url:
+    userController: 'http://localhost:8082/api/v1/inner/user'

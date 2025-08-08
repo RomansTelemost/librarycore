@@ -22,7 +22,5 @@ springdoc:
 jwt:
   secret: 'secreteeffffffffffffffffffffffffffffffffffffffffffaf'
 apiKeys:
-  map:
-    apiKey: asda
-    key2: asdd
+  apiKey: customKey
 
