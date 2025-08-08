@@ -5,6 +5,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,11 +14,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Collections;
 
+@RequiredArgsConstructor
 public class ApiKeyFilter extends OncePerRequestFilter {
 
     private static final String API_KEY_PREFIX = "api_key=";
 
-    private static final String API_KEY = "testApi";
+    private final String authServiceApiKey;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -28,7 +30,7 @@ public class ApiKeyFilter extends OncePerRequestFilter {
         }
         String apiKey = headerValue.substring(API_KEY_PREFIX.length());
 
-        if (API_KEY.equals(apiKey)) {
+        if (authServiceApiKey.equals(apiKey)) {
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
             new UsernamePasswordAuthenticationToken("AuthService", null, Collections.emptySet());
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);

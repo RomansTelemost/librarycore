@@ -20,6 +20,21 @@ public class SecurityConfig {
     @Value("${jwt.secret}")
     private String secret;
 
+    //TODO Переделать на map. Развернуть ключ и значение
+    @Value("${apiKeys.authServiceApiKey}")
+    private String authServiceApiKey;
+
+//    @Value("${apiKeys}")
+//    private Map<String, String> apiKeys;
+//
+//    public void setApiKeys(Map<String, String> apiKeys) {
+//        this.apiKeys = apiKeys;
+//    }
+//
+//    public Map<String, String> getApiKeys() {
+//        return apiKeys;
+//    }
+
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
@@ -28,7 +43,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .anyRequest().authenticated())
                 .addFilterBefore(new JwtFilter(secret), BasicAuthenticationFilter.class)
-                .addFilterAfter(new ApiKeyFilter(), BasicAuthenticationFilter.class);
+                .addFilterAfter(new ApiKeyFilter(authServiceApiKey), BasicAuthenticationFilter.class);
 
         return http.build();
     }
