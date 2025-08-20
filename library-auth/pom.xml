@@ -60,5 +60,9 @@
             <artifactId>jmh-core</artifactId>
             <version>1.33</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
     </dependencies>
 </project>

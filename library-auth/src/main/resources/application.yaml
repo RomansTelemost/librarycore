@@ -14,6 +14,11 @@ spring:
     properties:
       hibernate:
         show_sql: true
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 springdoc:
   swagger-ui:
     path: /swagger-ui
@@ -25,5 +30,6 @@ jwt:
 apiKeys:
   customApiKey: testApi
 core:
+  exchangeMode: async
   url:
     userController: 'http://localhost:8082/api/v1/inner/user'

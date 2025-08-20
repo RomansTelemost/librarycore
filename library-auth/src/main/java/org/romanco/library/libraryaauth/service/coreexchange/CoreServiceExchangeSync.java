@@ -3,6 +3,7 @@ package org.romanco.library.libraryaauth.service.coreexchange;
 import lombok.RequiredArgsConstructor;
 import org.romanco.library.common.dto.ApplicationUserComposeDto;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -11,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor
+@ConditionalOnProperty(havingValue = "sync", name = "core.exchangeMode")
 public class CoreServiceExchangeSync implements CoreServiceExchange {
 
     private final RestTemplate restTemplate;
