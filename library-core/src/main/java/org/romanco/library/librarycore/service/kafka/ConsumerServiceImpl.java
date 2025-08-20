@@ -19,6 +19,9 @@ public class ConsumerServiceImpl implements ConsumerService {
 
     @KafkaListener(topics = {"registration"})
     @Override
+
+    //todo убрать авто коммит и делать самому save
+    //auto commit set false
     public void consumeMessage(@Payload ApplicationUserComposeDto applicationUserComposeDto) {
         ApplicationUser applicationUser = applicationUserMapper.toApplicationUser(applicationUserComposeDto);
         userService.save(applicationUser);

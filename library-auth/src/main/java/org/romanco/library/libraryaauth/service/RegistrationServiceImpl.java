@@ -24,6 +24,8 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     @Transactional
+    //@Transactional not good. Needs outbox transaction
+    //Acknowledgment - настроить
     public void registerUser(ApplicationUserComposeDto applicationUserComposeDto) {
         applicationUserComposeDto.setPassword(bCryptPasswordEncoder.encode(applicationUserComposeDto.getPassword()));
         ApplicationUserAccount applicationUserAccount = applicationUserAccountMapper.toApplicationUserAccount(applicationUserComposeDto);
