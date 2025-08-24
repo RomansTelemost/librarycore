@@ -36,9 +36,10 @@ public class JwtFilter extends OncePerRequestFilter {
 
             Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secret).parseClaimsJws(jwtToken);
             Claims body = claimsJws.getBody();
-            String subject = body.getSubject();
+            String login = body.getSubject();
+            //todo искать id пользователя по логину и кэшировать id за логином
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                    new UsernamePasswordAuthenticationToken(subject, null, Collections.emptySet());
+                    new UsernamePasswordAuthenticationToken(login, null, Collections.emptySet());
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             filterChain.doFilter(request, response);
 

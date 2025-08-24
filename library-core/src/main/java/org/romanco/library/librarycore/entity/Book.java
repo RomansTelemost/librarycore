@@ -21,4 +21,7 @@ public class Book {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     private Author author;
+
+    //todo user id
+//    private User
 }
