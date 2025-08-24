@@ -16,6 +16,7 @@ spring:
         show_sql: true
   kafka:
     consumer:
+      enable-auto-commit: false
       bootstrap-servers: localhost:9092
       group-id: core-service
       auto-offset-reset: earliest
@@ -26,6 +27,8 @@ spring:
           json:
             trusted:
               packages: '*'
+    listener:
+      ack-mode: MANUAL
 springdoc:
   swagger-ui:
     path: /swagger-ui

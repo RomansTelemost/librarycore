@@ -6,6 +6,7 @@ import org.romanco.library.librarycore.entity.ApplicationUser;
 import org.romanco.library.librarycore.mapper.ApplicationUserMapper;
 import org.romanco.library.librarycore.service.UserService;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +20,9 @@ public class ConsumerServiceImpl implements ConsumerService {
 
     @KafkaListener(topics = {"registration"})
     @Override
-
-    //todo убрать авто коммит и делать самому save
-    //auto commit set false
-    public void consumeMessage(@Payload ApplicationUserComposeDto applicationUserComposeDto) {
+    public void consumeMessage(@Payload ApplicationUserComposeDto applicationUserComposeDto, Acknowledgment ack) {
         ApplicationUser applicationUser = applicationUserMapper.toApplicationUser(applicationUserComposeDto);
         userService.save(applicationUser);
+        ack.acknowledge();
     }
 }

@@ -2,6 +2,7 @@ package org.romanco.library.libraryaauth.service.coreexchange;
 
 import lombok.RequiredArgsConstructor;
 import org.romanco.library.common.dto.ApplicationUserComposeDto;
+import org.romanco.library.libraryaauth.aspect.methodduration.LogExecutionTime;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -11,10 +12,10 @@ import org.springframework.stereotype.Service;
 @ConditionalOnProperty(havingValue = "async", name = "core.exchangeMode")
 public class CoreServiceExchangeAsync implements CoreServiceExchange {
 
-
     private final KafkaTemplate<String, ApplicationUserComposeDto> kafkaTemplate;
 
     @Override
+    @LogExecutionTime
     public void sendToCore(ApplicationUserComposeDto applicationUserComposeDto) {
         kafkaTemplate.send("registration", applicationUserComposeDto);
     }
