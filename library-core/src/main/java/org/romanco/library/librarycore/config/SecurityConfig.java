@@ -1,7 +1,9 @@
 package org.romanco.library.librarycore.config;
 
+import lombok.RequiredArgsConstructor;
 import org.romanco.library.librarycore.filter.ApiKeyFilter;
 import org.romanco.library.librarycore.filter.JwtFilter;
+import org.romanco.library.librarycore.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +17,10 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final UserService userService;
 
     @Value("${jwt.secret}")
     private String secret;
@@ -42,7 +47,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> requests
                         .anyRequest().authenticated())
-                .addFilterBefore(new JwtFilter(secret), BasicAuthenticationFilter.class)
+                .addFilterBefore(new JwtFilter(secret, userService), BasicAuthenticationFilter.class)
                 .addFilterAfter(new ApiKeyFilter(authServiceApiKey), BasicAuthenticationFilter.class);
 
         return http.build();

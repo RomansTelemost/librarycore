@@ -39,4 +39,6 @@ jwt:
 apiKeys:
   authServiceApiKey: testApi
   asd: das
+kafka:
+  registrationEventsListenerEnabled: true
 
